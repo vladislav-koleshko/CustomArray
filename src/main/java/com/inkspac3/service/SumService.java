@@ -2,6 +2,6 @@ package com.inkspac3.service;
 
 import com.inkspac3.entity.CustomArray;
 
-public interface ArrSumService {
-    int calculateArrSumLength(CustomArray array);
+public interface SumService {
+    int calculateSumLength(CustomArray array);
 }

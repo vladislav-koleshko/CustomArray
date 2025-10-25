@@ -1,51 +1,76 @@
-package com.inkspac3.entities;
+package com.inkspac3.entity;
 
-import com.inkspac3.exception.ArrayFullException;
-import com.inkspac3.exception.InvalidArgumentException;
-import com.inkspac3.exception.InvalidIndexException;
+import com.inkspac3.exception.CustomArrayException;
+import com.inkspac3.validator.CustomArrayValidator;
 import org.apache.log4j.Logger;
 
-public class CustomArray {
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class CustomArray implements Iterable<String> {
     private static final Logger log = Logger.getLogger(CustomArray.class);
     private final String[] data;
     private int size;
+    private final CustomArrayValidator validator;
 
-    public CustomArray(int size) {
-        if (size < 0) {
-            log.error("Размер массива должна быть больше 0");
-            throw new InvalidArgumentException("Размер массива должна быть больше 0");
-        }
-        this.data = new String[size];
+
+    public CustomArray(int capacity, CustomArrayValidator validator) throws CustomArrayException {
+        this.validator = validator;
+        this.validator.validateArrayCreation(capacity);
+        this.data = new String[capacity];
         this.size = 0;
-        log.info("Массив размера " + size + " был создан");
+        log.info("Array of capacity " + capacity + " was created");
     }
 
-    public void add(String item) {
+    public void add(String item) throws CustomArrayException {
         if (size < data.length) {
             data[size++] = item;
-            log.info("Элемент был успешно добавлен в массив");
+            log.info("The item " + item + " was added to the array");
         } else {
-            log.error("Ошибка добавления элемента в массив: массив переполнен!");
-            throw new ArrayFullException("Массив переполнен");
+            log.error("Error occured while adding " + item + " to the array");
+            throw new CustomArrayException("Array is full!");
         }
     }
 
-    public String get(int index) {
-        if (index >= size || index < 0) {
-            log.error("Неверный индекс " + index);
-            throw new InvalidIndexException("Индекс выходит за границы массива: " + index);
-        }
+    public String getElem(int index) throws CustomArrayException {
+        validator.validateArrayElement(index, this.size);
         return data[index];
     }
 
+    public String[] get(){
+        return data;
+    }
+    
     public int size() {
         return size;
     }
 
-    public void printArray() {
-        for (int i = 0; i < size; i++) {
-            System.out.print(data[i] + " ");
-        }
-        System.out.println();
+    @Override
+    public String toString() {
+        return "Array{" +
+                "data=" + Arrays.toString(data) +
+                ", size=" + size +
+                '}';
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        return new Iterator<String>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public String next() {
+                if(!hasNext()) {
+                    throw new NoSuchElementException("No more elements");
+                }
+                return data[index++];
+            }
+        };
     }
 }

@@ -10,8 +10,6 @@ public class ArrFactory {
     private static final Logger log = LogManager.getLogger(ArrFactory.class);
     private CustomArrayValidator validator;
 
-
-    public ArrFactory() {}
     public ArrFactory(final CustomArrayValidator validator) {
         this.validator = validator;
     }

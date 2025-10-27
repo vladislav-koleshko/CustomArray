@@ -1,7 +1,7 @@
 package com.inkspac3.entity;
 
 import com.inkspac3.exception.CustomArrayException;
-import com.inkspac3.validator.CustomArrayValidator;
+import com.inkspac3.validator.impl.CustomArrayValidator;
 import org.apache.log4j.Logger;
 
 import java.util.Arrays;
@@ -41,7 +41,12 @@ public class CustomArray implements Iterable<String> {
     public String[] get(){
         return data;
     }
-    
+
+    public void set(int index, String value) throws CustomArrayException {
+        validator.validateArrayElement(index, this.size);
+        data[index] = value;
+    }
+
     public int size() {
         return size;
     }

@@ -3,6 +3,7 @@ package com.inkspac3;
 import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;
 import com.inkspac3.factory.ArrFactory;
+import com.inkspac3.reader.ArrayReader;
 import com.inkspac3.service.impl.*;
 import com.inkspac3.validator.CustomArrayValidatorImpl;
 
@@ -10,17 +11,19 @@ public class Main {
     public static void main(String[] args) throws CustomArrayException {
         var validator = new CustomArrayValidatorImpl();
         var factory = new ArrFactory(validator);
+        var reader = new ArrayReader(validator);
+
         CustomArray array = factory.createArray(10);
 
-        array.add("1a");
-        array.add("2b2");
-        array.add("3c33");
-        array.add("4d444");
-        array.add("5e5555");
+        array.add("1aegaegaa");
+        array.add("2baeaegaegaegaeg22");
+        array.add("3c3ge3");
+        array.add("4d44ae4");
+        array.add("5e55gegegeg55");
         array.add("6f66666");
-        array.add("7g777777");
+        array.add("7g777geg777");
         array.add("8h8888888");
-        array.add("9i99999999");
+        array.add("9i99999eeeee999");
 
         System.out.println(array.getElem(8));
         System.out.println(array.toString());
@@ -46,5 +49,16 @@ public class Main {
         var replaceByConditionService = new ReplaceByConditionServiceImpl(validator);
         System.out.println(replaceByConditionService.replaceByIndex(2, array, "2"));
         System.out.println(array.toString());
+
+        var sortService = new SortServiceImpl();
+        sortService.sortByLengthWQuickSort(array);
+        System.out.println(array.toString());
+
+        try {
+            CustomArray array3 = reader.readFromFile("src/main/resources/input.txt");
+            System.out.println(array3.toString());
+        } catch (CustomArrayException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 }

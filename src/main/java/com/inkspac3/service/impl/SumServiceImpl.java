@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 public class SumServiceImpl implements SumService {
     private final Logger log = Logger.getLogger(this.getClass().getName());
 
+
     @Override
     public int calculateSumLength(CustomArray array) {
         if (array.size() == 0) {

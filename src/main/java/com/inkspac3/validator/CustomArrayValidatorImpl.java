@@ -2,6 +2,7 @@ package com.inkspac3.validator;
 
 import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;
+import com.inkspac3.validator.impl.CustomArrayValidator;
 import org.apache.log4j.Logger;
 
 public class CustomArrayValidatorImpl implements CustomArrayValidator {

@@ -1,4 +1,4 @@
-package com.inkspac3.validator;
+package com.inkspac3.validator.impl;
 
 import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;

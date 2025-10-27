@@ -13,6 +13,9 @@ public class ArrayParser {
     private static final Logger log = Logger.getLogger(ArrayParser.class);
     private final CustomArrayValidator validator;
     private final ArrFactory factory;
+    private static final String VALID_STRING_REGEX = ".*[a-zA-Zа-яА-Я0-9].*";
+    private static final String SPACE_DELIMITER = "\\s+";
+
 
     public ArrayParser(CustomArrayValidator validator, ArrFactory factory) {
         this.validator = validator;
@@ -29,7 +32,7 @@ public class ArrayParser {
         for (String line : lines) {
             if (line == null) continue;
 
-            String[] parts = line.trim().split("\\s+");
+            String[] parts = line.trim().split(SPACE_DELIMITER);
             for (String word : parts) {
                 if (isValidString(word)) {
                     validTokens.add(word);
@@ -55,6 +58,6 @@ public class ArrayParser {
     }
 
     private boolean isValidString(String str) {
-        return str != null && !str.isBlank() && str.matches(".*[a-zA-Zа-яА-Я0-9].*");
+        return str != null && !str.isBlank() && str.matches(VALID_STRING_REGEX);
     }
 }

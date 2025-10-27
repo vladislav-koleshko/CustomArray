@@ -53,10 +53,9 @@ public class CustomArray implements Iterable<String> {
 
     @Override
     public String toString() {
-        return "Array{" +
-                "data=" + Arrays.toString(data) +
-                ", size=" + size +
-                '}';
+        StringBuilder builder = new StringBuilder();
+        builder.append("Array");
+        return builder.append(Arrays.toString(data)).toString();
     }
 
     @Override

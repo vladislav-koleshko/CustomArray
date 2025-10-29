@@ -1,8 +1,8 @@
-package com.inkspac3.validator;
+package com.inkspac3.validator.impl;
 
 import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;
-import com.inkspac3.validator.impl.CustomArrayValidator;
+import com.inkspac3.validator.CustomArrayValidator;
 import org.apache.log4j.Logger;
 
 public class CustomArrayValidatorImpl implements CustomArrayValidator {
@@ -10,32 +10,32 @@ public class CustomArrayValidatorImpl implements CustomArrayValidator {
 
 
     @Override
-    public boolean validateArrayCreation(int capacity) throws CustomArrayException {
+    public boolean validateArrayCreation(int capacity){
         if (capacity <= 0) {
             log.error("Invalid array capacity " + capacity);
-            throw new CustomArrayException("Invalid array capacity " + capacity);
+            return false;
         }
         return true;
     }
 
     @Override
-    public boolean validateArrayElement(int index, int size) throws CustomArrayException {
+    public boolean validateArrayElement(int index, int size){
         if (index < 0 || index >= size) {
             log.error("Invalid index " + index);
-            throw new CustomArrayException("Index out of bounds " + index);
+            return false;
         }
         if (size <= 0) {
             log.error("Invalid size " + size);
-            throw new CustomArrayException("Invalid size " + size);
+            return false;
         }
         return true;
     }
 
     @Override
-    public boolean validateArray(int size, CustomArray arr) throws CustomArrayException {
+    public boolean validateArray(int size, CustomArray arr){
         if (arr == null) {
             log.error("Array can't be null ");
-            throw new CustomArrayException("Array can't be null!");
+            return false;
         }
         return true;
     }

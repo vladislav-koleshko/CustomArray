@@ -3,7 +3,7 @@ package com.inkspac3.service.impl;
 import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;
 import com.inkspac3.service.MinMaxService;
-import com.inkspac3.validator.impl.CustomArrayValidator;
+import com.inkspac3.validator.CustomArrayValidator;
 import org.apache.log4j.Logger;
 
 public class MinMaxServiceImpl implements MinMaxService {

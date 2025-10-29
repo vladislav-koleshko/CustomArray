@@ -3,7 +3,7 @@ package com.inkspac3.parser;
 import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;
 import com.inkspac3.factory.ArrFactory;
-import com.inkspac3.validator.impl.CustomArrayValidator;
+import com.inkspac3.validator.CustomArrayValidator;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -24,10 +24,11 @@ public class ArrayParser {
 
     public CustomArray parseToArray(List<String> lines) throws CustomArrayException {
         if (lines == null || lines.isEmpty()) {
+            log.error("Empty array line");
             throw new CustomArrayException("No lines to parse");
         }
 
-        List<String> validTokens = new ArrayList<>();
+        List<String> validStrings = new ArrayList<>();
 
         for (String line : lines) {
             if (line == null) continue;
@@ -35,22 +36,23 @@ public class ArrayParser {
             String[] parts = line.trim().split(SPACE_DELIMITER);
             for (String word : parts) {
                 if (isValidString(word)) {
-                    validTokens.add(word);
+                    validStrings.add(word);
                 } else {
                     log.warn("Skipping invalid token: [" + word + "]");
                 }
             }
         }
 
-        if (validTokens.isEmpty()) {
-            throw new CustomArrayException("No valid tokens found in input");
+        if (validStrings.isEmpty()) {
+            log.error("No valid strings found");
+            throw new CustomArrayException("No valid strings found");
         }
 
-        validator.validateArrayCreation(validTokens.size());
-        CustomArray array = factory.createArray(validTokens.size());
+        validator.validateArrayCreation(validStrings.size());
+        CustomArray array = factory.createArray(validStrings.size());
 
-        for (String token : validTokens) {
-            array.add(token);
+        for (String elem : validStrings) {
+            array.add(elem);
         }
 
         log.info("Successfully parsed array with " + array.size() + " valid elements");

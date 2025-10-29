@@ -3,8 +3,8 @@ package com.inkspac3.service.impl;
 import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;
 import com.inkspac3.service.ReplaceByConditionService;
-import com.inkspac3.validator.impl.CustomArrayValidator;
-import com.inkspac3.validator.CustomArrayValidatorImpl;
+import com.inkspac3.validator.CustomArrayValidator;
+import com.inkspac3.validator.impl.CustomArrayValidatorImpl;
 import org.apache.log4j.Logger;
 
 public class ReplaceByConditionServiceImpl implements ReplaceByConditionService {

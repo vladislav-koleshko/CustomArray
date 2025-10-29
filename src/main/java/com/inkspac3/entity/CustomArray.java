@@ -1,7 +1,7 @@
 package com.inkspac3.entity;
 
 import com.inkspac3.exception.CustomArrayException;
-import com.inkspac3.validator.impl.CustomArrayValidator;
+import com.inkspac3.validator.CustomArrayValidator;
 import org.apache.log4j.Logger;
 
 import java.util.Arrays;
@@ -9,10 +9,11 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class CustomArray implements Iterable<String> {
-    private static final Logger log = Logger.getLogger(CustomArray.class);
+    private Long id = 1L;
     private final String[] data;
     private int size;
     private final CustomArrayValidator validator;
+    private static final Logger log = Logger.getLogger(CustomArray.class);
 
 
     public CustomArray(int capacity, CustomArrayValidator validator) throws CustomArrayException {
@@ -29,7 +30,7 @@ public class CustomArray implements Iterable<String> {
             log.info("The item " + item + " was added to the array");
         } else {
             log.error("Error occured while adding " + item + " to the array");
-            throw new CustomArrayException("Array is full!");
+            throw new CustomArrayException("Array is full");
         }
     }
 

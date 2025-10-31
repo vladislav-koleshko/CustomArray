@@ -17,10 +17,13 @@ public class ReplaceByConditionServiceImpl implements ReplaceByConditionService 
     }
 
     @Override
-    public boolean replaceByIndex(int index, CustomArray array, String newValue) throws CustomArrayException {
-        validator.validateArray(array.size(), array);
+    public String replaceByIndex(int index, CustomArray array, String newValue) throws CustomArrayException {
+        if(!validator.validateArray(array)) {
+            throw new CustomArrayException("Array can't be null");
+        }
+
         array.get()[index] = newValue;
         log.info("Element " + index + " replaced with value " + newValue);
-        return true;
+        return array.get()[index];
     }
 }

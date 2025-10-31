@@ -24,6 +24,16 @@ public class CustomArray implements Iterable<String> {
         log.info("Array of capacity " + capacity + " was created");
     }
 
+    public CustomArray(String[] data, CustomArrayValidator validator) throws CustomArrayException {
+        this.validator = validator;
+        if (data == null) {
+            throw new CustomArrayException("Array cannot be null");
+        }
+        this.data = data.clone();
+        this.size = data.length;
+        log.info("CustomArray created from existing array, size: " + size);
+    }
+
     public void add(String item) throws CustomArrayException {
         if (size < data.length) {
             data[size++] = item;
@@ -35,16 +45,20 @@ public class CustomArray implements Iterable<String> {
     }
 
     public String getElem(int index) throws CustomArrayException {
-        validator.validateArrayElement(index, this.size);
+        if(!validator.validateArrayElement(index, this.size)) {
+            throw new CustomArrayException("Invalid index");
+        }
         return data[index];
     }
 
-    public String[] get(){
+    public String[] get() {
         return data;
     }
 
     public void set(int index, String value) throws CustomArrayException {
-        validator.validateArrayElement(index, this.size);
+        if(!validator.validateArrayElement(index, this.size)) {
+            throw new CustomArrayException("Invalid index");
+        }
         data[index] = value;
     }
 

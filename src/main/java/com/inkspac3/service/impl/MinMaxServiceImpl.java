@@ -8,16 +8,17 @@ import org.apache.log4j.Logger;
 
 public class MinMaxServiceImpl implements MinMaxService {
     private final Logger log = Logger.getLogger(this.getClass().getName());
-    private CustomArrayValidator validator;
+    private final CustomArrayValidator validator;
 
-
-    public MinMaxServiceImpl(CustomArrayValidator customArrayValidator) {
-        this.validator = customArrayValidator;
+    public MinMaxServiceImpl(CustomArrayValidator validator) {
+        this.validator = validator;
     }
 
     @Override
     public String getMin(CustomArray array) throws CustomArrayException {
-        validator.validateArray(array.size(), array);
+        if(!validator.validateArray(array)) {
+            throw new CustomArrayException("Array can't be null");
+        }
         String min = "";
         for(var s : array) {
             if(min.isEmpty() || s.length() < min.length()) {
@@ -30,7 +31,10 @@ public class MinMaxServiceImpl implements MinMaxService {
 
     @Override
     public String getMax(CustomArray array) throws CustomArrayException {
-        validator.validateArray(array.size(), array);
+        if(!validator.validateArray(array)) {
+            throw new CustomArrayException("Array can't be null");
+        }
+
         String max = "";
         for(var s : array) {
             if(max.isEmpty() || s.length() > max.length()) {

@@ -6,5 +6,5 @@ import com.inkspac3.exception.CustomArrayException;
 public interface CustomArrayValidator {
     boolean validateArrayCreation(int capacity);
     boolean validateArrayElement(int index, int size);
-    boolean validateArray(int size, CustomArray arr);
+    boolean validateArray(CustomArray arr);
 }

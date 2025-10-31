@@ -4,7 +4,7 @@ import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;
 
 public interface SortService {
-    void sortByLengthWMergeSort(CustomArray array) throws CustomArrayException;
-    void sortByLengthWQuickSort(CustomArray array) throws CustomArrayException;
-    void sortByLengthWSelectionSort(CustomArray array) throws CustomArrayException;
+    CustomArray sortByLengthWMergeSort(CustomArray array) throws CustomArrayException;
+    CustomArray sortByLengthWQuickSort(CustomArray array) throws CustomArrayException;
+    CustomArray sortByLengthWSelectionSort(CustomArray array) throws CustomArrayException;
 }

@@ -4,5 +4,5 @@ import com.inkspac3.entity.CustomArray;
 import com.inkspac3.exception.CustomArrayException;
 
 public interface ReplaceByConditionService {
-    boolean replaceByIndex(int index, CustomArray array, String newValue) throws CustomArrayException;
+    String replaceByIndex(int index, CustomArray array, String newValue) throws CustomArrayException;
 }

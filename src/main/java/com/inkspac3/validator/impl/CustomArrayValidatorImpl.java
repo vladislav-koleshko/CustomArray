@@ -24,17 +24,13 @@ public class CustomArrayValidatorImpl implements CustomArrayValidator {
             log.error("Invalid index " + index);
             return false;
         }
-        if (size <= 0) {
-            log.error("Invalid size " + size);
-            return false;
-        }
         return true;
     }
 
     @Override
-    public boolean validateArray(int size, CustomArray arr){
+    public boolean validateArray(CustomArray arr){
         if (arr == null) {
-            log.error("Array can't be null ");
+            log.error("Array can't be null");
             return false;
         }
         return true;

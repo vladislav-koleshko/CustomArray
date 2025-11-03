@@ -15,7 +15,7 @@ public class MinMaxServiceImpl implements MinMaxService {
     }
 
     @Override
-    public String getMin(CustomArray array) throws CustomArrayException {
+    public int getMin(CustomArray array) throws CustomArrayException {
         if(!validator.validateArray(array)) {
             throw new CustomArrayException("Array can't be null");
         }
@@ -26,11 +26,11 @@ public class MinMaxServiceImpl implements MinMaxService {
             }
         }
         log.info("min = " + min);
-        return min;
+        return min.length();
     }
 
     @Override
-    public String getMax(CustomArray array) throws CustomArrayException {
+    public int getMax(CustomArray array) throws CustomArrayException {
         if(!validator.validateArray(array)) {
             throw new CustomArrayException("Array can't be null");
         }
@@ -42,6 +42,6 @@ public class MinMaxServiceImpl implements MinMaxService {
             }
         }
         log.info("max = " + max);
-        return max;
+        return max.length();
     }
 }

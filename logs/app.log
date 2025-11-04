@@ -370,8 +370,8 @@ java.io.FileNotFoundException: resources\input.txt (Системе не удае
 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)
 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
-	at com.inkspac3.reader.ArrayReader.readFromFile(ArrayReader.java:27)
-	at com.inkspac3.Main.main(Main.java:58)
+	at com.inkspac3.course.reader.CustomArrayReader.readFromFile(ArrayReader.java:27)
+	at com.inkspac3.course.Main.main(Main.java:58)
 2025-10-27 18:56:22 INFO  CustomArray - Array of capacity 10 was created
 2025-10-27 18:56:22 INFO  CustomArray - The item 1aegaegaa was added to the array
 2025-10-27 18:56:22 INFO  CustomArray - The item 2baeaegaegaegaeg22 was added to the array
@@ -397,8 +397,8 @@ java.io.FileNotFoundException: java\resources\input.txt (Системе не у�
 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)
 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
-	at com.inkspac3.reader.ArrayReader.readFromFile(ArrayReader.java:27)
-	at com.inkspac3.Main.main(Main.java:58)
+	at com.inkspac3.course.reader.CustomArrayReader.readFromFile(ArrayReader.java:27)
+	at com.inkspac3.course.Main.main(Main.java:58)
 2025-10-27 18:56:45 INFO  CustomArray - Array of capacity 10 was created
 2025-10-27 18:56:45 INFO  CustomArray - The item 1aegaegaa was added to the array
 2025-10-27 18:56:45 INFO  CustomArray - The item 2baeaegaegaegaeg22 was added to the array
@@ -424,8 +424,8 @@ java.io.FileNotFoundException: main\resources\input.txt (Системе не у�
 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)
 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
-	at com.inkspac3.reader.ArrayReader.readFromFile(ArrayReader.java:27)
-	at com.inkspac3.Main.main(Main.java:58)
+	at com.inkspac3.course.reader.CustomArrayReader.readFromFile(ArrayReader.java:27)
+	at com.inkspac3.course.Main.main(Main.java:58)
 2025-10-27 18:57:03 INFO  CustomArray - Array of capacity 10 was created
 2025-10-27 18:57:03 INFO  CustomArray - The item 1aegaegaa was added to the array
 2025-10-27 18:57:03 INFO  CustomArray - The item 2baeaegaegaegaeg22 was added to the array
